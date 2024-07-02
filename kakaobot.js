@@ -11,13 +11,15 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
 }
 
 const executeTask = (room) => {
-	doc = org.jsoup.Jsoup.connect("http://localhost:8000/api/url?id=test").get();
-	link = doc.body().text();
-	if (link != "NULL")
-		Api.replyRoom(room, link);
+	if (start == 1) {
+		doc = org.jsoup.Jsoup.connect("http://localhost:8000/api/url?id=test").get();
+		link = doc.body().text();
+		if (link != "NULL")
+			Api.replyRoom(room, link);
+	}
 }
 
-const scheduleTask = (hour, minute, room) => {
+const scheduleTask = (hour, minute) => {
 	const now = new Date();
 	const firstExecution = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, minute, 0, 0);
 	if (now > firstExecution) {
@@ -26,17 +28,11 @@ const scheduleTask = (hour, minute, room) => {
 	const timeUntilFirstExecution = firstExecution - now;
 
 	setTimeout(() => {
-		executeTask(room);
-		setInterval(executeTask, 24 * 60 * 60 * 1000, room);
+		executeTask(bot_room);
+		setInterval(executeTask, 24 * 60 * 60 * 1000, bot_room);
 	}, timeUntilFirstExecution);
 }
 
-while (1) {
-	if (start == 1) {
-		scheduleTask(10, 00, bot_room);
-		scheduleTask(14, 00, bot_room);
-		scheduleTask(18, 00, bot_room);
-		break ;
-	}
-	sleep(45);
-}
+scheduleTask(10, 00);
+scheduleTask(14, 00);
+scheduleTask(18, 00);
