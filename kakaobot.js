@@ -7,15 +7,20 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
 	if (msg == "!알림봇시작" && start == 0) {
 		start = start + 1;
 		bot_room = room;
+		replier.reply("알림봇이 활성화되었습니다.");
 	}
 }
 
 const executeTask = (room) => {
 	if (start == 1) {
-		doc = org.jsoup.Jsoup.connect("http://localhost:8000/api/url?id=test").get();
-		link = doc.body().text();
-		if (link != "NULL")
-			Api.replyRoom(room, link);
+		try {
+			doc = org.jsoup.Jsoup.connect("http://52.79.233.30:8000/api/url?id=kuz_test98").get();
+			link = doc.body().text();
+			if (link != "NULL")
+				Api.replyRoom(room, link);
+		} catch (e) {
+			;
+		}
 	}
 }
 
