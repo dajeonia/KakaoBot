@@ -1,13 +1,12 @@
 const scriptName = "kakaobot";
 
 var start = 0;
+var bot_room = "";
 
 function response(room, msg, sender, isGroupChat, replier, imageDB, packageName) {
 	if (msg == "!알림봇시작" && start == 0) {
 		start = start + 1;
-		scheduleTask(10, 00, room);
-		scheduleTask(14, 00, room);
-		scheduleTask(18, 00, room);
+		bot_room = room;
 	}
 }
 
@@ -30,4 +29,14 @@ const scheduleTask = (hour, minute, room) => {
 		executeTask(room);
 		setInterval(executeTask, 24 * 60 * 60 * 1000, room);
 	}, timeUntilFirstExecution);
+}
+
+while (1) {
+	if (start == 1) {
+		scheduleTask(10, 00, bot_room);
+		scheduleTask(14, 00, bot_room);
+		scheduleTask(18, 00, bot_room);
+		break ;
+	}
+	sleep(45);
 }
