@@ -4,10 +4,14 @@ var start = 0;
 var bot_room = "";
 
 function response(room, msg, sender, isGroupChat, replier, imageDB, packageName) {
-	if (msg == "!알림봇시작" && start == 0) {
-		start = start + 1;
-		bot_room = room;
-		replier.reply("알림봇이 활성화되었습니다.");
+	if (msg == "!알림봇시작") {
+		if (start != 0)
+			replier.reply("알림봇이 이미 활성화 상태입니다.");
+		else {
+			start = start + 1;
+			bot_room = room;
+			replier.reply("알림봇이 동작합니다.");
+		}
 	}
 }
 
