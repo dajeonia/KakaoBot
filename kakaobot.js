@@ -42,6 +42,19 @@ const scheduleTask = (hour, minute) => {
 	}, timeUntilFirstExecution);
 }
 
+scheduleTask(22, 00);
+scheduleTask(00, 00);
+scheduleTask(02, 00);
+scheduleTask(04, 00);
+scheduleTask(06, 00);
+scheduleTask(08, 00);
+scheduleTask(10, 00);
+scheduleTask(12, 00);
+scheduleTask(14, 00);
+scheduleTask(16, 00);
+
+/*
 scheduleTask(10, 00);
 scheduleTask(14, 00);
 scheduleTask(18, 00);
+*/
