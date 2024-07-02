@@ -1,0 +1,15 @@
+{
+    "main": "kakaobot.js",
+    "option": {
+        "apiLevel": 1,
+        "useUnifiedParams": false,
+        "useBabel": false,
+        "scriptPower": false,
+        "debugRoom": {
+            "name": "DEBUG ROOM",
+            "sender": "DEBUG SENDER",
+            "isGroupChat": false,
+            "packageName": "com.xfl.msgbot"
+        }
+    }
+}
