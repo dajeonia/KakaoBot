@@ -23,10 +23,10 @@ const executeTask = (room) => {
 			if (link != "NULL")
 				Api.replyRoom(room, link);
 		} catch (e) {
-			;
+			Log.e("링크에 접속할 수 없습니다.");
 		}
 	}
-}
+};
 
 const scheduleTask = (hour, minute) => {
 	const now = new Date();
@@ -40,21 +40,8 @@ const scheduleTask = (hour, minute) => {
 		executeTask(bot_room);
 		setInterval(executeTask, 24 * 60 * 60 * 1000, bot_room);
 	}, timeUntilFirstExecution);
-}
+};
 
-scheduleTask(22, 00);
-scheduleTask(00, 00);
-scheduleTask(02, 00);
-scheduleTask(04, 00);
-scheduleTask(06, 00);
-scheduleTask(08, 00);
-scheduleTask(10, 00);
-scheduleTask(12, 00);
-scheduleTask(14, 00);
-scheduleTask(16, 00);
-
-/*
 scheduleTask(10, 00);
 scheduleTask(14, 00);
 scheduleTask(18, 00);
-*/
